@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Retirada de Caixa</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculadora de Retirada de Caixa</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Contagem de Caixa</h2>
+      <div id="quantidades"></div>
+      <button onclick="calcularValorEmCaixa()">Calcular Valor em Caixa</button>
+      <p id="valorTotal"></p>
+    </div>
+
+    <div class="container">
+      <h2>Cálculo de Retirada</h2>
+      <label for="valorDesejado">Valor a Deixar no Caixa (R$):</label>
+      <input type="text" id="valorDesejado" disabled /><br /><br />
+      <button onclick="calcularTroco()">Calcular Troco</button>
+      <div id="exibicao"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
