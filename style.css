@@ -1,14 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
-
 body {
   font-family: "DM Sans";
   display: flex;
-  flex-direction: column;
-  background-color: #121212;
+  background-color: #f7f7f7;
   margin: 0;
   padding: 20px;
-  color: #ffffff;
-  gap: 1em;
+  color: #212529;
 }
 
 h2 {
@@ -16,18 +12,19 @@ h2 {
 }
 
 .container {
-  background-color: #222;
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
   margin-bottom: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   height: fit-content;
+  width: 700px;
 }
 
 .container-retirada {
-  background-color: #222;
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -35,6 +32,8 @@ h2 {
   flex-direction: column;
   height: fit-content;
   margin: 0;
+  max-width: 600px;
+  min-width: 600px;
 }
 
 label {
@@ -42,64 +41,122 @@ label {
   margin-bottom: 8px;
 }
 
+.central {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  width: 100vw;
+}
+
 input[type="text"],
 input[type="number"] {
   width: calc(100% - 20px);
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ffffff;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da;
   border-radius: 5px;
-  background-color: #333;
-  color: #94e148;
+  background-color: #ffffff;
+  color: #495057;
 }
 
 button {
-  background-color: #94e148;
-  color: #121212;
+  background-color: #007bff;
+  color: #ffffff;
   padding: 12px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
+  margin-top: -30px;
+  margin-bottom: 20px;
 }
 
 button:hover {
-  background-color: #80c738;
+  background-color: #0056b3;
 }
 
 #exibicao {
   margin-top: 20px;
-  padding: 15px;
+  padding: 25px;
   border-radius: 5px;
-  background-color: #333;
-  color: #94e148;
+  background-color: #ffffff;
+  color: #212529;
+  border: 1px solid #acacac;
 }
 
 #exibicao p {
   margin: 5px 0;
 }
 
-#quantidades {
+#quantidades-notas,
+#quantidades-moedas {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-#quantidades div {
+#quantidades-notas div,
+#quantidades-moedas div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#quantidades img {
-  width: 80px;
+#quantidades-notas img {
+  min-width: 180px;
+  max-width: 180px;
+  min-height: 90px;
+  max-height: 90px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+#quantidades-moedas img {
+  width: 100px;
   height: auto;
   margin-bottom: 10px;
 }
 
 #exibicao img {
-  width: 50px;
+  width: 70px;
   height: auto;
   margin-right: 5px;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#instrucoes {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  min-width: 600px;
+}
+
+#instrucoes h3 {
+  margin-bottom: 10px;
+}
+
+#instrucoes p {
+  margin-bottom: 8px;
+}
+
+.developer-info {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  width: fit-content;
+}
+
+.developer-info img {
+  width: 100px;
 }

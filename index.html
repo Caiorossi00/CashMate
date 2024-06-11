@@ -5,20 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Retirada de Caixa</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="container">
-      <h2>Contagem de Caixa</h2>
-      <div id="quantidades"></div>
-    </div>
+    <div class="central">
+      <div class="container">
+        <h2>Contagem de Caixa</h2>
+        <div id="quantidades-notas"></div>
+        <div id="quantidades-moedas"></div>
+        <p id="valorTotal"></p>
+      </div>
 
-    <div class="container-retirada">
-      <h2>Cálculo de Retirada</h2>
-      <label for="valorDesejado">Valor a Deixar no Caixa (R$):</label>
-      <input type="text" id="valorDesejado" disabled /><br /><br />
-      <button onclick="calcularTroco()">Calcular Retirada</button>
-      <div id="exibicao"></div>
-      <p id="valorTotal"></p>
+      <div class="right-side">
+        <div class="container-retirada">
+          <h2>Cálculo de Retirada</h2>
+          <label for="valorDesejado">Valor a Deixar no Caixa (R$):</label>
+          <input type="text" id="valorDesejado" disabled /><br /><br />
+          <button onclick="calcularTroco()">Calcular Retirada</button>
+          <div id="exibicao"></div>
+        </div>
+        <div id="instrucoes">
+          <h3>Instruções de Uso</h3>
+          <p>1. Insira a quantidade de notas de cada valor;</p>
+          <p>2. O valor total em caixa será calculado automaticamente;</p>
+          <p>
+            3. Insira o valor que deseja deixar no caixa e clique em calcular
+            retirada.
+          </p>
+          <p>
+            4. O aplicativo calculará, utilizando um algoritmo eficiente para
+            disponibilizar a melhor combinação possível de notas para serem
+            retiradas.
+          </p>
+        </div>
+        <aside class="developer-info">
+          <a href="https://instagram.com/caiorossi.dev" target="_blank">
+            <img src="./assets/logo.png" alt="logo" />
+          </a>
+        </aside>
+      </div>
     </div>
 
     <script src="script.js"></script>
