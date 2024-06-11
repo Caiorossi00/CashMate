@@ -1,42 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
 body {
-  font-family: sans-serif;
+  font-family: "DM Sans";
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  flex-direction: column;
   background-color: #121212;
   margin: 0;
-  gap: 5em;
+  padding: 20px;
+  color: #ffffff;
+  gap: 1em;
 }
 
 h2 {
-  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.container {
+  background-color: #222;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+}
+
+.container-retirada {
+  background-color: #222;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin: 0;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
-  color: #94e148;
+  margin-bottom: 8px;
 }
 
-input[type="text"] {
-  padding: 8px;
-  border: 1px solid #94e148;
-  border-radius: 4px;
-  width: 250px;
-  box-sizing: border-box;
-  background-color: #222;
+input[type="text"],
+input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #333;
   color: #94e148;
 }
 
 button {
   background-color: #94e148;
   color: #121212;
-  padding: 10px 15px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 button:hover {
@@ -46,10 +71,8 @@ button:hover {
 #exibicao {
   margin-top: 20px;
   padding: 15px;
-  border: 1px solid #94e148;
-  border-radius: 4px;
-  background-color: #222;
-  width: 300px;
+  border-radius: 5px;
+  background-color: #333;
   color: #94e148;
 }
 
@@ -57,11 +80,26 @@ button:hover {
   margin: 5px 0;
 }
 
-.container {
-  border: 1px solid #94e148;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  background-color: #222;
-  color: #94e148;
+#quantidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#quantidades div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#quantidades img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+#exibicao img {
+  width: 50px;
+  height: auto;
+  margin-right: 5px;
 }

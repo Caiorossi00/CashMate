@@ -1,30 +1,85 @@
-const denominacoes = [100, 50, 20, 10, 5, 2, 1, 0.5, 0.25, 0.1, 0.05, 0.01];
+const denominacoes = [
+  {
+    valor: 100,
+    imagem:
+      "https://www.bcb.gov.br/novasnotas/assets/img/section/100/100_front.jpg",
+  },
+  {
+    valor: 50,
+    imagem:
+      "https://www.bcb.gov.br/novasnotas/assets/img/section/50/50_front.jpg",
+  },
+  {
+    valor: 20,
+    imagem:
+      "https://www.bcb.gov.br/novasnotas/assets/img/section/20/20_front.jpg",
+  },
+  {
+    valor: 10,
+    imagem:
+      "https://www.bcb.gov.br/novasnotas/assets/img/section/10/10_front.jpg",
+  },
+  {
+    valor: 5,
+    imagem:
+      "https://www.bcb.gov.br/novasnotas/assets/img/section/5/5_front.jpg",
+  },
+  {
+    valor: 2,
+    imagem:
+      "https://www.bcb.gov.br/novasnotas/assets/img/section/2/2_front.jpg",
+  },
+  {
+    valor: 1,
+    imagem:
+      "https://www.bcb.gov.br/novasnotas/assets/img/section/1/1_front.jpg",
+  },
+  { valor: 0.5, imagem: "https://i.imgur.com/t8GX6v3.png" },
+  { valor: 0.25, imagem: "https://i.imgur.com/8zTLI1r.png" },
+  { valor: 0.1, imagem: "https://i.imgur.com/l3t7yJ8.png" },
+  { valor: 0.05, imagem: "https://i.imgur.com/5y99w97.png" },
+  { valor: 0.01, imagem: "https://i.imgur.com/X7VdVJf.png" },
+];
+
 const quantidades = {};
 let valorTotalEmCaixa = 0;
 
+document.addEventListener("DOMContentLoaded", criarCamposQuantidades);
+
 function criarCamposQuantidades() {
   const quantidadesDiv = document.getElementById("quantidades");
-  denominacoes.forEach((valor) => {
-    const label = document.createElement("label");
-    label.textContent = `${valor} Reais: `;
+  quantidadesDiv.innerHTML = "";
+  denominacoes.forEach((denominacao) => {
+    const container = document.createElement("div");
+    container.style.marginBottom = "10px";
+
+    const img = document.createElement("img");
+    img.src = denominacao.imagem;
+    img.alt = `${denominacao.valor} Reais`;
+    img.style.width = "200px";
+    img.style.marginRight = "5px";
+
     const input = document.createElement("input");
     input.type = "number";
-    input.id = `qtd-${valor}`;
+    input.id = `qtd-${denominacao.valor}`;
     input.min = "0";
     input.addEventListener("input", calcularValorEmCaixa);
-    quantidadesDiv.appendChild(label);
-    quantidadesDiv.appendChild(input);
-    quantidadesDiv.appendChild(document.createElement("br"));
+
+    container.appendChild(img);
+    container.appendChild(input);
+    quantidadesDiv.appendChild(container);
   });
 }
 
 function calcularValorEmCaixa() {
   valorTotalEmCaixa = 0;
-  denominacoes.forEach((valor) => {
-    quantidades[valor] =
-      parseInt(document.getElementById(`qtd-${valor}`).value) || 0;
-    valorTotalEmCaixa += valor * quantidades[valor];
+  denominacoes.forEach((denominacao) => {
+    const input = document.getElementById(`qtd-${denominacao.valor}`);
+    const quantidade = parseInt(input.value) || 0;
+    quantidades[denominacao.valor] = quantidade;
+    valorTotalEmCaixa += denominacao.valor * quantidade;
   });
+
   document.getElementById(
     "valorTotal"
   ).textContent = `Valor total em caixa: R$ ${valorTotalEmCaixa.toFixed(2)}`;
@@ -47,48 +102,60 @@ function calcularTroco() {
   }
 
   const valorRetirar = valorTotalEmCaixa - valorDesejado;
-  const troco = {};
-  let valorRestante = valorRetirar;
+  const troco = calcularNotasMoedas(valorRetirar);
 
-  for (const valor of denominacoes) {
-    const qtdUsar = Math.min(
-      Math.floor(valorRestante / valor),
-      quantidades[valor]
-    );
-    troco[valor] = qtdUsar;
-    valorRestante -= qtdUsar * valor;
-
-    if (valorRestante < 0.01) break;
-  }
-
-  if (valorRestante > 0) {
-    const motivos = identificarMotivos(valorRestante);
-    const solucoes = sugerirSolucoes(valorRestante);
-
-    let mensagem =
-      "Não é possível retirar o valor desejado com as notas e moedas disponíveis.\n\nMotivos:\n";
-    motivos.forEach((motivo) => (mensagem += "- " + motivo + "\n"));
-
-    if (solucoes.length > 0) {
-      mensagem += "\nSoluções alternativas:\n";
-      solucoes.forEach((solucao) => (mensagem += "- " + solucao + "\n"));
-    }
-
-    alert(mensagem);
+  if (troco.valorRestante > 0) {
+    alertarTrocoInsuficiente(troco.valorRestante);
     return;
   }
 
-  exibirResultados(troco);
+  exibirResultados(troco.notasMoedas, valorRetirar, valorDesejado);
+}
+
+function calcularNotasMoedas(valorRetirar) {
+  const troco = {};
+  let valorRestante = valorRetirar;
+
+  denominacoes.forEach((denominacao) => {
+    const qtdUsar = Math.min(
+      Math.floor(valorRestante / denominacao.valor),
+      quantidades[denominacao.valor]
+    );
+    troco[denominacao.valor] = qtdUsar;
+    valorRestante -= qtdUsar * denominacao.valor;
+    if (valorRestante < 0.01) valorRestante = 0;
+  });
+
+  return { notasMoedas: troco, valorRestante };
+}
+
+function alertarTrocoInsuficiente(valorRestante) {
+  const motivos = identificarMotivos(valorRestante);
+  const solucoes = sugerirSolucoes(valorRestante);
+
+  let mensagem =
+    "Não é possível retirar o valor desejado com as notas e moedas disponíveis.\n\nMotivos:\n";
+  motivos.forEach((motivo) => (mensagem += `- ${motivo}\n`));
+
+  if (solucoes.length > 0) {
+    mensagem += "\nSoluções alternativas:\n";
+    solucoes.forEach((solucao) => (mensagem += `- ${solucao}\n`));
+  }
+
+  alert(mensagem);
 }
 
 function identificarMotivos(valorRestante) {
-  const motivos = [];
-  for (const valor of denominacoes) {
-    if (valorRestante >= valor && quantidades[valor] === 0) {
-      motivos.push(`Faltam notas/moedas de R$ ${valor.toFixed(2)}.`);
-    }
-  }
-  return motivos;
+  return denominacoes
+    .filter(
+      (denominacao) =>
+        valorRestante >= denominacao.valor &&
+        quantidades[denominacao.valor] === 0
+    )
+    .map(
+      (denominacao) =>
+        `Faltam notas/moedas de R$ ${denominacao.valor.toFixed(2)}.`
+    );
 }
 
 function sugerirSolucoes(valorRestante) {
@@ -98,29 +165,44 @@ function sugerirSolucoes(valorRestante) {
   return solucoes;
 }
 
-function exibirResultados(troco) {
-  const valorDesejado = parseFloat(
-    document.getElementById("valorDesejado").value.replace(",", ".")
-  );
-  const valorRetirar = valorTotalEmCaixa - valorDesejado;
-
+function exibirResultados(troco, valorRetirar, valorDesejado) {
   const elementoExibicao = document.getElementById("exibicao");
   elementoExibicao.innerHTML = "";
 
-  let novoParagrafo = document.createElement("p");
   let resultado = `Valor em Caixa: R$ ${valorTotalEmCaixa.toFixed(2)}<br>
-                      Valor a Retirar: R$ ${valorRetirar.toFixed(2)}<br>
-                      Valor Restante: R$ ${valorDesejado.toFixed(2)}<br><br>
-                      Notas e Moedas a Retirar:<br>`;
+                    Valor a Retirar: R$ ${valorRetirar.toFixed(2)}<br>
+                    Valor Restante: R$ ${valorDesejado.toFixed(2)}<br><br>
+                    Retire:<br>`;
 
-  for (const [valor, quantidade] of Object.entries(troco)) {
+  elementoExibicao.innerHTML += resultado;
+
+  const containerImagens = document.createElement("div");
+  containerImagens.id = "imagensTroco";
+
+  Object.entries(troco).forEach(([valor, quantidade]) => {
     if (quantidade > 0) {
-      resultado += `${valor} Reais: ${quantidade}<br>`;
+      const denominacao = denominacoes.find((den) => den.valor == valor);
+      const imgContainer = document.createElement("div");
+      imgContainer.style.display = "flex";
+      imgContainer.style.alignItems = "center";
+      imgContainer.style.marginBottom = "10px";
+
+      const img = document.createElement("img");
+      img.src = denominacao.imagem;
+      img.alt = `${valor} Reais`;
+      img.style.width = "150px";
+      img.style.marginRight = "10px";
+
+      const texto = document.createElement("span");
+      texto.textContent = `x${quantidade} = R$ ${(valor * quantidade).toFixed(
+        2
+      )}`; // Mostra a quantidade e o valor total da denominação
+
+      imgContainer.appendChild(img);
+      imgContainer.appendChild(texto);
+      containerImagens.appendChild(imgContainer);
     }
-  }
+  });
 
-  novoParagrafo.innerHTML = resultado;
-  elementoExibicao.appendChild(novoParagrafo);
+  elementoExibicao.appendChild(containerImagens);
 }
-
-criarCamposQuantidades();
