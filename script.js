@@ -17,8 +17,7 @@ const denominacoes = [
   },
   {
     valor: 5,
-    imagem:
-      "https://www.bcb.gov.br/novasnotas/assets/img/section/5/5_front.jpg",
+    imagem: "./assets/5.jpg",
   },
   {
     valor: 2,
