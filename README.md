@@ -30,4 +30,4 @@
 
   <p>Data de início: 10/06/2024<br>Lançamento da versão 1.0: 11/06/2024</p>
 
-  <a href="[https://caiorossi00.github.io/Greedy-algorithm/](https://caiorossi00.github.io/CashMate/)">Acesse o CashMate aqui</a>
+  <a href="https://caiorossi00.github.io/Greedy-algorithm/">Acesse o CashMate aqui</a>
