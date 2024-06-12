@@ -25,23 +25,23 @@ const denominacoes = [
   },
   {
     valor: 1,
-    imagem: "./assets/1.jpg",
+    imagem: "./assets/1.png",
   },
   {
     valor: 0.5,
-    imagem: "./assets/0,50.jpg",
+    imagem: "./assets/0,50.png",
   },
   {
     valor: 0.25,
-    imagem: "./assets/0,25.jpg",
+    imagem: "./assets/0,25.png",
   },
   {
     valor: 0.1,
-    imagem: "./assets/0,10.jpg",
+    imagem: "./assets/0,10.png",
   },
   {
     valor: 0.05,
-    imagem: "./assets/0,05.jpg",
+    imagem: "./assets/0,05.png",
   },
 ];
 

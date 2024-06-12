@@ -2,10 +2,10 @@ body {
   font-family: "DM Sans";
   display: flex;
   align-items: center;
-  background-color: #f7f7f7;
+  background-color: #121212;
   margin: 0;
   padding: 20px;
-  color: #212529;
+  color: #ffffff;
   box-sizing: border-box;
 }
 
@@ -15,7 +15,7 @@ h2 {
 
 .container,
 .container-retirada {
-  background-color: #ffffff;
+  background-color: #1e1e1e;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -42,18 +42,18 @@ label {
 input[type="text"],
 input[type="number"] {
   width: 100%;
-  padding: 10px;
+  padding: 6px;
   margin-bottom: 10px;
   border: 1px solid #ced4da;
   border-radius: 5px;
   background-color: #ffffff;
-  color: #495057;
+  color: #121212;
   box-sizing: border-box;
 }
 
 button {
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: #94e148;
+  color: #121212;
   padding: 12px 20px;
   border: none;
   border-radius: 5px;
@@ -65,14 +65,14 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #7fc137;
 }
 
 #exibicao {
   padding: 25px;
   border-radius: 5px;
-  background-color: #ffffff;
-  color: #212529;
+  background-color: #1e1e1e;
+  color: #ffffff;
   border: 1px solid #acacac;
   width: 100%;
   box-sizing: border-box;
@@ -128,7 +128,7 @@ button:hover {
 }
 
 #instrucoes {
-  background-color: #ffffff;
+  background-color: #1e1e1e;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -147,7 +147,7 @@ button:hover {
 }
 
 .developer-info {
-  background-color: #fff;
+  background-color: #1e1e1e;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
