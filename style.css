@@ -62,6 +62,7 @@ button {
   transition: background-color 0.3s;
   margin-top: -30px;
   margin-bottom: 20px;
+  font-family: inherit;
 }
 
 button:hover {
@@ -157,6 +158,17 @@ button:hover {
 
 .developer-info img {
   width: 100px;
+}
+
+#quantidades-notas div span,
+#quantidades-moedas div span {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 1;
+  margin-bottom: 0.5em;
 }
 
 @media (max-width: 768px) {

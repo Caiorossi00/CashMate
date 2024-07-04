@@ -1,48 +1,15 @@
 const denominacoes = [
-  {
-    valor: 100,
-    imagem: "./assets/100.jpg",
-  },
-  {
-    valor: 50,
-    imagem: "./assets/50.jpg",
-  },
-  {
-    valor: 20,
-    imagem: "./assets/20.jpg",
-  },
-  {
-    valor: 10,
-    imagem: "./assets/10.jpg",
-  },
-  {
-    valor: 5,
-    imagem: "./assets/5.jpg",
-  },
-  {
-    valor: 2,
-    imagem: "./assets/2.jpg",
-  },
-  {
-    valor: 1,
-    imagem: "./assets/1.png",
-  },
-  {
-    valor: 0.5,
-    imagem: "./assets/0,50.png",
-  },
-  {
-    valor: 0.25,
-    imagem: "./assets/0,25.png",
-  },
-  {
-    valor: 0.1,
-    imagem: "./assets/0,10.png",
-  },
-  {
-    valor: 0.05,
-    imagem: "./assets/0,05.png",
-  },
+  { valor: 100, imagem: "./assets/100.jpg" },
+  { valor: 50, imagem: "./assets/50.jpg" },
+  { valor: 20, imagem: "./assets/20.jpg" },
+  { valor: 10, imagem: "./assets/10.jpg" },
+  { valor: 5, imagem: "./assets/5.jpg" },
+  { valor: 2, imagem: "./assets/2.jpg" },
+  { valor: 1, imagem: "./assets/1.png" },
+  { valor: 0.5, imagem: "./assets/0,50.png" },
+  { valor: 0.25, imagem: "./assets/0,25.png" },
+  { valor: 0.1, imagem: "./assets/0,10.png" },
+  { valor: 0.05, imagem: "./assets/0,05.png" },
 ];
 
 const quantidades = {};
@@ -59,6 +26,12 @@ function criarCamposQuantidades() {
   denominacoes.forEach((denominacao) => {
     const container = document.createElement("div");
     container.style.marginBottom = "10px";
+    container.style.position = "relative";
+
+    const valorTotalDenominacao = document.createElement("span");
+    valorTotalDenominacao.id = `valor-${denominacao.valor}`;
+    valorTotalDenominacao.textContent = "R$ 0,00";
+    container.appendChild(valorTotalDenominacao);
 
     const img = document.createElement("img");
     img.src = denominacao.imagem;
@@ -89,12 +62,18 @@ function calcularValorEmCaixa() {
     const quantidade = parseInt(input.value) || 0;
     quantidades[denominacao.valor] = quantidade;
     valorTotalEmCaixa += denominacao.valor * quantidade;
+    atualizarValorTotalDenominacao(denominacao.valor, quantidade);
   });
 
   document.getElementById(
     "valorTotal"
   ).textContent = `Valor total em caixa: R$ ${valorTotalEmCaixa.toFixed(2)}`;
   document.getElementById("valorDesejado").disabled = false;
+}
+
+function atualizarValorTotalDenominacao(valor, quantidade) {
+  const valorTotalElement = document.getElementById(`valor-${valor}`);
+  valorTotalElement.textContent = `R$ ${(valor * quantidade).toFixed(2)}`;
 }
 
 function calcularTroco() {
@@ -147,9 +126,9 @@ function exibirResultados(troco, valorRetirar, valorDesejado, valorRestante) {
   elementoExibicao.innerHTML = "";
 
   let resultado = `Valor em Caixa: R$ ${valorTotalEmCaixa.toFixed(2)}<br>
-                    Valor a Retirar: R$ ${valorRetirar.toFixed(2)}<br>
-                    Valor Restante: R$ ${valorDesejado.toFixed(2)}<br><br>
-                    Retire:<br>`;
+                   Valor a Retirar: R$ ${valorRetirar.toFixed(2)}<br>
+                   Valor Restante: R$ ${valorDesejado.toFixed(2)}<br><br>
+                   Retire:<br>`;
 
   elementoExibicao.innerHTML += resultado;
 
