@@ -28,6 +28,6 @@
     <li><strong>Soma total de cada nota</strong> Display do valor individual de cada nota ao adicionar uma unidade. Ex: 100x2 retornar 200, além do valor total.</li>
   </ul>
 
-  <p>Data de início: 10/06/2024<br>Lançamento da versão 1.0: 11/06/2024</p>
+  <p>Data de início: 10/06/2024<br>Lançamento da versão 1.0: 11/06/2024<br>Implementação da feature de display individual das notas: 04/07/2024</p>
 
   <a href="https://caiorossi00.github.io/CashMate/">Acesse o CashMate aqui</a>
