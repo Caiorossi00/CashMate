@@ -12,6 +12,70 @@
     <link rel="icon" type="image/png" href="./assets/icon.jpg" />
   </head>
   <body>
+    <nav class="navbar">
+      <a
+        class="navbar-brand"
+        target="_blank"
+        href="https://cashmate-home.vercel.app"
+        >CashMate</a
+      >
+      <ul>
+        <li><a href="#" id="instrucoes-link">Como utilizar?</a></li>
+        <li>
+          <a href="https://cashmate-home.vercel.app" target="_blank"
+            >Por que utilizar?</a
+          >
+        </li>
+        <li>
+          <a href="https://www.instagram.com/caiorossi.dev/" target="_blank"
+            >Entre em contato</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div id="instrucoesModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Instruções de Uso</h3>
+        <h4>1. <strong>Inserindo Quantidades de Notas e Moedas:</strong></h4>
+        <p>
+          a. Na seção "Contagem de Caixa", você verá campos de entrada para cada
+          denominação de notas e moedas, identificados por imagens.
+        </p>
+        <p>
+          b. Insira a quantidade de cada denominação nos campos correspondentes.
+        </p>
+        <p>
+          c. À medida que você insere as quantidades, o valor total em caixa
+          será atualizado automaticamente e exibido.
+        </p>
+
+        <h4>2. <strong>Calculando a Retirada:</strong></h4>
+        <p>
+          a. Na seção "Cálculo de Retirada", insira o valor que deseja deixar no
+          caixa no campo "Valor a Deixar no Caixa (R$)".
+        </p>
+        <p>b. Clique no botão "Calcular Retirada".</p>
+
+        <h4>3. <strong>Visualizando os Resultados:</strong></h4>
+        <p>
+          a. Após clicar em "Calcular Retirada", o aplicativo calculará a melhor
+          combinação de notas e moedas para atingir o valor desejado.
+        </p>
+        <p>
+          b. O resultado incluirá o valor total em caixa, o valor a ser
+          retirado, o valor restante no caixa e a quantidade de cada denominação
+          a ser retirada.
+        </p>
+        <p>
+          c. Se não for possível retirar exatamente o valor desejado, uma
+          mensagem informará o valor mais próximo possível e o valor restante
+          não retirado.
+        </p>
+      </div>
+    </div>
+
     <div class="central">
       <div class="container">
         <h2>Contagem de Caixa</h2>
@@ -27,20 +91,6 @@
           <input type="text" id="valorDesejado" disabled /><br /><br />
           <button onclick="calcularTroco()">Calcular Retirada</button>
           <div id="exibicao"></div>
-        </div>
-        <div id="instrucoes">
-          <h3>Instruções de Uso</h3>
-          <p>1. Insira a quantidade de notas de cada valor;</p>
-          <p>2. O valor total em caixa será calculado automaticamente;</p>
-          <p>
-            3. Insira o valor que deseja deixar no caixa e clique em calcular
-            retirada.
-          </p>
-          <p>
-            4. O aplicativo calculará, utilizando um algoritmo eficiente para
-            disponibilizar a melhor combinação possível de notas para serem
-            retiradas.
-          </p>
         </div>
         <aside class="developer-info">
           <a href="https://instagram.com/caiorossi.dev" target="_blank">

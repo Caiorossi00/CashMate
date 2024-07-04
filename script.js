@@ -186,3 +186,19 @@ function exibirResultados(troco, valorRetirar, valorDesejado, valorRestante) {
     elementoExibicao.appendChild(mensagem);
   }
 }
+
+const modal = document.getElementById("instrucoesModal");
+const btn = document.getElementById("instrucoes-link");
+const span = document.getElementsByClassName("close-button")[0];
+
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+span.onclick = function () {
+  modal.style.display = "none";
+};
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
