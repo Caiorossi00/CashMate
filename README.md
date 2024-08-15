@@ -25,9 +25,8 @@
   <ul>
     <li><strong>Soma com Crédito + Débito:</strong> Implementação da funcionalidade para somar transações com cartão de crédito e débito ao total em caixa, proporcionando uma visão mais abrangente do faturamento do estabelecimento.</li>
     <li><strong>Caixa Inicial + Caixa Final Resultando no Faturamento:</strong> Adição da opção para registrar o valor do caixa inicial e final, resultando automaticamente no faturamento do período e fornecendo informações valiosas para análise financeira.</li>
-    <li><strong>Soma total de cada nota</strong> Display do valor individual de cada nota ao adicionar uma unidade. Ex: 100x2 retornar 200, além do valor total.</li>
   </ul>
 
-  <p>Data de início: 10/06/2024<br>Lançamento da versão 1.0: 11/06/2024<br>Implementação da feature de display individual das notas: 04/07/2024</p>
+  <p>Data de início: 10/06/2024<br>Lançamento da versão 1.0: 11/06/2024<br>Lançamento da versão 1.1: 04/07/2024</p>
 
   <a href="https://caiorossi00.github.io/CashMate/">Acesse o CashMate aqui</a>
